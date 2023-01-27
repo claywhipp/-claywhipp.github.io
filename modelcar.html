@@ -1,0 +1,247 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Model Car Analysis	</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Main Page</a>
+					</header>
+
+				<!-- Nav -->
+					<!-- <nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">This is Massively</a></li>
+							<li class="active"><a href="generic.html">Generic Page</a></li>
+							<li><a href="elements.html">Elements Reference</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav> -->
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="minor">
+									<span class="date">January 2023</span>
+									<h2>Customer and Product Analysis of Model Car Company in SQL</h2>
+									<p>I analyzed sale records from a model car company to help improve product offerings and retain customers.</p>
+								</header>
+								<div class="image main"><img src="images/modelcar.jpg" alt="" style="width:400px;height:300px;" /></div>
+								<p>
+									The following SQL code was written by me, Clay Whipp. It was done as part of a guided project through Dataquest, an online learning website.
+									The code for the project can be found <a href="https://github.com/claywhipp/modelcar"><b>here</b></a>.
+								</p>
+								<p>
+									In this project I looked at data from a sales records database for a company that sells scale model cars. 
+									There were 3 main questions I was looking to answer to help the company improve their sales:
+								</p>
+								<ol>
+									<li>Which products should the company order more or less of?</li>
+									<li>How should they tailor communication strategies to customer behaviors? </li>
+									<li>How much can they spend on acquiring new customers?</li>
+								</ol>
+								<p>The schema for the database is shown below:</p>
+								<figure>
+									<img src="images/stores_schema.png" alt="" style="width:500px;height:400px;" />
+									<figcaption><i>Model Car Database Schema</i></figcaption>
+								</figure>
+								<br>
+								<p>
+									In order better understand the size of the data, I queried the number of attributes, 
+									number of rows for each table in the dataset and put them into a new table.
+								</p>
+								<figure>
+									<img src="images/explore_data.png" alt="" style="width:372px;height:229px;" /> 
+									<figcaption><i>Number of Rows and Attributes of Dataset</i></figcaption>
+								</figure>
+								<br>
+								<p> 
+									Next, I answered the first question: <b>Which products should the company order more or less of?</b>
+									This will help the company not to run out of stock of the best selling products, and not to order too much of the 
+									products with lower sales. To answer this question, I calculated qualities I called demand ratio and product performance where
+								</p>
+								<p>
+									Demand ratio  = SUM(quantityOrdered) / quantityInStock
+								</p>
+								<p>
+									Product performance = SUM(quantityOrdered * priceEach)
+								</p>	
+								<p>
+									These attributes can be found in the products, and orderdetails tables.
+									I found the products with top 10 and bottom 10 demand ratios. The company should order more of the products with a high demand ratio,
+									since they are ordered more by customers and in stock less, and order less of the products with a low demand ratio. Here is the result of the queries I wrote:
+								</p>
+								
+								<figure>
+									<img src="images/query1a.png" alt="" style="width:428px;height:200px;" />
+									<figcaption><i>Products with Top 10 Demand Ratios</i></figcaption>
+								</figure>
+								
+								<br>
+								<figure>
+									<img src="images/query1b.png" alt="" style="width:417px;height:200px;" />
+									<figcaption><i>Products with Bottom 10 Demand Ratios</i></figcaption>
+								</figure>
+								<br>
+								<p>
+									7 out of 10 of the products with the lowest demand ratios are classic or vintage cars. The 1960 BSA Gold Star has by far the highest demand ratio at 67.6. 
+									The 1968 Ford Mustang has the second highest demand ratio at 13.7, and has a product performance of $154,299 which is over twice as much as the 
+									BSA Gold Star. Thus, the company should order less of certain vintage cars like the 1995 Honda Civic, but more of others like the 1968 Ford Mustang. 
+								</p>
+
+								<p>
+									Next, I answered the second question: <b>How should the company tailor communication strategies to customer behaviors?</b>
+								</p>
+
+								<p>I answered this question by finding the top 10 VIP customers, defined as customers who generate the most profit, and least-engaged customers,
+									defined as the customers who generate the least profit. 
+									Profit was calculated using the following formula: SUM((priceEach - buyPrice) * quantityOrdered). Here is the result of my queries:
+								</p>
+
+								<figure>
+									<img src="images/query2a.png" alt="" style="width:600px;height:200px;" />
+									<figcaption><i>10 Top VIP Customers</i></figcaption>
+								</figure>
+								
+								<br>
+								<figure>
+									<img src="images/query2b.png" alt="" style="width:600px;height:200px;" />
+									<figcaption><i>Less-engaged Customers</i></figcaption>
+								</figure>
+								<br>
+								<p>
+									Now that the company knows who are their best customers and not as great customers are, they can tailor communication
+									to each of them accordingly. For example, they could offer a loyalty program to retain the VIP customers, and offer
+									coupons to the less-engaged customers to entice them to shopping more frequently with the company.
+								 </p>
+								 <p>
+								 	Finally, I answered the third question: <b>How much can the company spend on acquiring new customers?</b>	
+									Before, I answered this question, I found what percentage of customers each month were new to see if it was actually worth it
+								 	to spend money acquiring new customers. This is the result of that query:
+								</p>	
+								<figure>
+									<img src="images/query3a.png" alt="" style="width:400px;height:432px;" />
+									<figcaption><i>Percentage of New Monthly Customers</i></figcaption>
+								</figure>
+								<br>
+								<p>
+									I found the percentage of new customers has been declining over time. This dataset also includes 
+									data from 2015. Since There are no records in the table after September 2014, this means the company hasn't 
+									had any new customers since 2014. This means it's critical that the company invests money into obtaining new customers.
+								</p>
+								<p>
+									To find how much money the company can spend on new customers, I calculated the Lifetime Value (LTV) of an average customer, which represents
+									the total amount of money an average customer generates for the company. From the query I wrote, I found the LTV to be around $39,000.
+									If the company wants to spend for example 10% of their revenue from customers on acquiring new customers and acquires 100 new customers next month, 
+									then they have a budget of $390,000 to spend.
+								</p>
+								<p>
+									To summarize, the actions I performed for this company are:
+									<ol>
+										<li>Found the products with the highest and lowest demand, which helps the company determine 
+											which products they should order more and less of 
+										</li>
+										<li>Found the customers that spend the most and least at the company, which helps them determine
+											who they should target with which stategies to increase customer retention and increase customer spending
+										</li>
+										<li>
+											Found the amount a total customers spends over their lifetime at the company, which helps the company determine
+											how much they can spend on acquiring new customers.
+										</li>
+									</ol>
+								</p>
+								<p>
+									This project helped me better understand how to use subqueries, common table expression, and joins in SQL.
+								</p>
+							</section>
+
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<!-- <section>
+							<form method="post" action="#">
+								<div class="fields">
+									<div class="field">
+										<label for="name">Name</label>
+										<input type="text" name="name" id="name" />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="text" name="email" id="email" />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="3"></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Send Message" /></li>
+								</ul>
+							</form> 
+						</section>-->
+						<section class="split contact">
+							<section class="alt">
+								<h3>Address</h3>
+								<p>Portland, Oregon</p>
+							</section>
+							<section>
+								<h3>Phone</h3>
+								<p><a href="#">(541) 600-9982</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">claywhipp@gmail.com</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<!-- <li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li> -->
+									<li><a href="https://www.linkedin.com/in/clay-whipp-788930a4/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://github.com/claywhipp/" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

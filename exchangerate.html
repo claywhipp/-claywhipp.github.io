@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Exchange Rate Project</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Main Page</a>
+					</header>
+
+				<!-- Nav -->
+					<!-- <nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">This is Massively</a></li>
+							<li class="active"><a href="generic.html">Generic Page</a></li>
+							<li><a href="elements.html">Elements Reference</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav> -->
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="minor">
+									<span class="date">January 2023</span>
+									<h2>Euro Exchange Rate Visualization in Python</h2>
+									<p>
+										I looked at euro exchange rate data using the pandas library in Python to visualize how the euro-dollar exchange rate changed during the
+										2007-2008 recession.
+									</p>
+								</header>
+								<div class="image main"><img src="images/exchangerate.jpg" alt="" style="width:451px;height:300px;" /></div>
+								<p>
+									The Python project code was written by me, Clay Whipp. It was done as part of a guided project through Dataquest, an online learning website.
+									You can find the code for the project <a href="https://github.com/claywhipp/exchangerates"><b>here</b></a>.
+								</p>
+								<p>
+									In this project I looked at data on daily Euro exchange rates between 1999 and 2021. The Euro (€) 
+									is the currency used by most members of the European Union.
+								</p>
+								<p>
+									The data was compiled by Daria Chemkaeva and can be found <a href=https://www.kaggle.com/datasets/lsind18/euro-exchange-daily-rates-19992020><b>here</b></a>.
+									The source of the data is the European Central Bank.
+								</p>
+								<p>
+									I first read in the CSV with the data as a dataframe using pandas.
+									After some exploration, I found this dataset has 5699 rows and 41 columns. Certain currencies have null values. The date is type object.
+									Some currency exchange rates are type object and others are float. 
+								</p>
+								<p>
+									Next, I cleaned the data. I renamed and sorted certain columns, changed their data type, and reset the index.
+									I selected just the date and US dollar columns, which is all I was interested in looking at. 
+									I deleted US dollar rows with the value '-', since I was only interested in rows with a numerical value.
+									I also converted the US dollar column to type float.  
+								</p>
+								<p>
+									I then found the a 30-day rolling mean of the US dollar data. The rolling mean data had 29 fewer values than before since
+									the first 29 days there's not enough data to calulate a rolling mean. 
+								</p>
+								<p>
+									Finally I created a plot of the euro-dollar rate from 2006-2009, highlighting the effect 
+									of the 2007-2008 recession. To do this I isolated the data from 2006-2009 and 2007-2008 and
+									found a 30-day rolling mean for both. I used matplotlib to create the plot. I highlighted the 
+									recession years with a thicker red line, and the peak of the recession in 2008 with a darker grey box. I made sure to maximize the data-ink ratio, 
+									by only including necessary information in the plot, and made other elements less apparent like the background grid. Here is the final product:
+								</p>
+								<img src="images/europlot.png" alt="" style="width:618px;height:300px;" />
+								<br>
+								<br>
+								<p>
+									The exchange rate slowly increases until peaking at 1.59 in 2008. At the end of 2008
+									it decreases sharply back down before rising again to around 1.5 at the end of 2009. 
+									An increasing exchange rate translate to a stronger euro and weaker dollar. So at the peak of the recession,
+									the euro was quite strong in relation to the dollar. For further study, I could compare the euro to other currencies to see if
+									similar trends occur, where the euro becomes stronger during 2007-2008. 
+								</p>
+								<p>
+									In this project I learned how to better use pandas to select and clean data, and matplotlib to visualize data while maximizing 
+									the data-ink ratio.
+								</p>
+
+							</section>
+
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<!-- <section>
+							<form method="post" action="#">
+								<div class="fields">
+									<div class="field">
+										<label for="name">Name</label>
+										<input type="text" name="name" id="name" />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="text" name="email" id="email" />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="3"></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Send Message" /></li>
+								</ul>
+							</form> 
+						</section>-->
+						<section class="split contact">
+							<section class="alt">
+								<h3>Address</h3>
+								<p>Portland, Oregon</p>
+							</section>
+							<section>
+								<h3>Phone</h3>
+								<p><a href="#">(541) 600-9982</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">claywhipp@gmail.com</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<!-- <li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li> -->
+									<li><a href="#" class="icon brands alt fa-linkedin"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
